@@ -4,7 +4,7 @@
   </li>
   <li class="breadcrumb-item active">Blank Page</li>
 </ol>
-<form id="formularioSocio" [formGroup]="formularioSocio">
+<form id="formularioSocio" [formGroup]="formularioSocio" (ngSubmit)="onSubmit()" >
   <div class="row">
     <div class="col-12">
       <div class="container">
@@ -40,7 +40,7 @@
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
-                <button class="btn btn-primary" (click)="salvarSocio()">Salvar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
                 <button class="btn btn-default">Limpar</button>
               </div>
             </div>
