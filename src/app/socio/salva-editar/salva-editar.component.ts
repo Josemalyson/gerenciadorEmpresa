@@ -30,7 +30,7 @@ export class SalvaEditarComponent implements OnInit {
   onSubmit() {
     console.log(this.formularioSocio);
 
-    this.http.post('https://httpbin.org/post', JSON.parse(this.formularioSocio.value))
+    this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioSocio.value))
     .subscribe(dados => console.log(dados));
 
     this.http.get('https://viacep.com.br/ws/01001000/json/')
