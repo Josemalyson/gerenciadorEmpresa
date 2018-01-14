@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocioService } from './socio.service';
 
 @Component({
   selector: 'app-socio',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _socioService: SocioService) { }
 
   ngOnInit() {
   }

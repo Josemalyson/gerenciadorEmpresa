@@ -4,5 +4,12 @@
 @import url("https://blackrockdigital.github.io/startbootstrap-sb-admin/vendor/font-awesome/css/font-awesome.min.css");
 @import url("https://blackrockdigital.github.io/startbootstrap-sb-admin/vendor/datatables/dataTables.bootstrap4.css");
 @import url("https://blackrockdigital.github.io/startbootstrap-sb-admin/css/sb-admin.css");
-
 @import url("https://blackrockdigital.github.io/startbootstrap-sb-admin/css/sb-admin.css");
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }

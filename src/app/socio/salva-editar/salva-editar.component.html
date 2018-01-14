@@ -1,25 +1,25 @@
-<!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="index.html">Dashboard</a>
   </li>
   <li class="breadcrumb-item active">Blank Page</li>
 </ol>
-<div class="row">
-  <div class="col-12">
-    <div class="container">
-      <div class="card-header">Novo Sócio</div>
-      <div class="card-body">
-        <form>
+<form id="formularioSocio" [formGroup]="formularioSocio">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <div class="card-header">Novo Sócio</div>
+        <div class="card-body">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">Nome</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Digite seu nome">
+                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Digite seu nome" formControlName="nome">
               </div>
               <div class="col-md-6">
                 <label for="exampleInputLastName">Sobrenome</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Digite seu sobrenome">
+                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Digite seu sobrenome"
+                  formControlName="sobreNome">
               </div>
             </div>
           </div>
@@ -27,11 +27,12 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="cpf">CPF</label>
-                <input class="form-control" id="cpf" type="number" aria-describedby="nameHelp" placeholder="Digite seu CPF" placeholder="000.000.000-00">
+                <input class="form-control" id="cpf" type="number" aria-describedby="nameHelp" placeholder="Digite seu CPF" placeholder="000.000.000-00"
+                  formControlName="cpf">
               </div>
               <div class="col-md-6">
-                <label for="email">Email</label>
-                <input class="form-control" id="email" type="email" aria-describedby="nameHelp" placeholder="Digite seu sobrenome">
+                <label for="email">E-mail</label>
+                <input class="form-control" id="email" type="email" aria-describedby="nameHelp" placeholder="Digite seu e-mail" formControlName="email">
               </div>
             </div>
           </div>
@@ -39,14 +40,14 @@
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
-                <button class="btn btn-primary">Salvar</button>
+                <button class="btn btn-primary" (click)="salvarSocio()">Salvar</button>
                 <button class="btn btn-default">Limpar</button>
               </div>
             </div>
           </div>
-        </form>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
-      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
   </div>
-</div>
+</form>
