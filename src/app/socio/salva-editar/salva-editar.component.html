@@ -4,22 +4,36 @@
   </li>
   <li class="breadcrumb-item active">Blank Page</li>
 </ol>
-<form id="formularioSocio" [formGroup]="formularioSocio" (ngSubmit)="onSubmit()" >
+<form id="formularioSocio" [formGroup]="formularioSocio" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-12">
       <div class="container">
-        <div class="card-header">Novo Sócio</div>
+        <div class="card-header">{{formularioSocio.get('id').value ? 'Editar sócio':'Novo sócio'}}</div>
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-success" role="alert" *ngIf="exibeMsg">
+              Salvo com sucesso!
+            </div>
+          </div>
+        </div>
+        <input type="hidden" formControlName="id" />
         <div class="card-body">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">Nome</label>
                 <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Digite seu nome" formControlName="nome">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioSocio.get('nome').valid">
+                  O campo Nome é obrigatório
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="exampleInputLastName">Sobrenome</label>
                 <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Digite seu sobrenome"
                   formControlName="sobreNome">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioSocio.get('sobreNome').valid">
+                  O campo Sobrenome é obrigatório
+                </div>
               </div>
             </div>
           </div>
@@ -29,10 +43,16 @@
                 <label for="cpf">CPF</label>
                 <input class="form-control" id="cpf" type="number" aria-describedby="nameHelp" placeholder="Digite seu CPF" placeholder="000.000.000-00"
                   formControlName="cpf">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioSocio.get('cpf').valid">
+                  O campo CPF é obrigatório
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="email">E-mail</label>
                 <input class="form-control" id="email" type="email" aria-describedby="nameHelp" placeholder="Digite seu e-mail" formControlName="email">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioSocio.get('email').valid">
+                  O campo E-mail é obrigatório
+                </div>
               </div>
             </div>
           </div>
@@ -41,7 +61,7 @@
             <div class="form-row">
               <div class="col-md-6">
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <button class="btn btn-default">Limpar</button>
+                <button class="btn btn-default" (click)="resetar()">Limpar</button>
               </div>
             </div>
           </div>

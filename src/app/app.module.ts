@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {NoopInterceptor} from './noop-interceptor';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SocioComponent } from './socio/socio.component';
 import { SalvaEditarComponent } from './socio/salva-editar/salva-editar.component';
-import { AppRoutingModule } from './/app-routing.module';
 import { EmpresaComponent } from './empresa/empresa.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -29,18 +31,24 @@ import { SocioService } from './socio/socio.service';
     WorkspaceComponent,
     NavigationComponent,
     SalvaEditarEmpresaComponent,
-    ViculoComponent
+    ViculoComponent,
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     HttpModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule,
     AppRoutingModule,
 
   ],
-  providers: [SocioService],
+  providers: [
+    SocioService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: NoopInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
