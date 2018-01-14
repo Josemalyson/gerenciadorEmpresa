@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Http } from '@angular/http';
 
 import { SocioService } from '../socio.service';
 
@@ -12,6 +13,7 @@ export class SalvaEditarComponent implements OnInit {
 
   constructor(
     private _socioService: SocioService,
+    private http: Http,
     private formBuilder: FormBuilder) { }
 
   formularioSocio: FormGroup;
@@ -27,6 +29,13 @@ export class SalvaEditarComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formularioSocio);
+
+    this.http.post('https://httpbin.org/post', JSON.parse(this.formularioSocio.value))
+    .subscribe(dados => console.log(dados));
+
+    this.http.get('https://viacep.com.br/ws/01001000/json/')
+    .subscribe(dados => console.log(dados));
+
     this._socioService.salvar(null);
   }
 
