@@ -5,21 +5,35 @@
   </li>
   <li class="breadcrumb-item active">Blank Page</li>
 </ol>
-<div class="row">
-  <div class="col-12">
-    <div class="container">
-      <div class="card-header">Novo Empresa</div>
-      <div class="card-body">
-        <form>
+<form id="formEmpresa" [formGroup]="formularioEmpresa" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-12">
+      <div class="container">
+        <div class="card-header">Novo Empresa</div>
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-success" role="alert" *ngIf="exibeMsg">
+              Salvo com sucesso!
+            </div>
+          </div>
+        </div>
+        <input type="hidden" formControlName="id" />
+        <div class="card-body">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">Nome</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Digite 0  nome">
+                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Digite o nome" formControlName="nome">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioEmpresa.get('nome').valid">
+                  O campo Nome é obrigatório
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="exampleInputSocial">Razão Social</label>
-                <input class="form-control" id="exampleInputSocial" type="text" aria-describedby="nameHelp" placeholder="Digite a razão social">
+                <input class="form-control" id="exampleInputSocial" type="text" aria-describedby="nameHelp" placeholder="Digite a razão social"  formControlName="razaoSocial">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioEmpresa.get('razaoSocial').valid">
+                  O campo Razão Social é obrigatório
+                </div>
               </div>
             </div>
           </div>
@@ -27,11 +41,17 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="cnpj">CNPJ</label>
-                <input class="form-control" id="cnpj" type="number" aria-describedby="nameHelp" placeholder="Digite seu CNPJ" placeholder="000.000.000.000/00">
+                <input class="form-control" id="cnpj" type="number" aria-describedby="nameHelp" placeholder="Digite seu CNPJ" placeholder="000.000.000.000/00" formControlName="cnpj">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioEmpresa.get('cnpj').valid">
+                  O campo CNPJ é obrigatório
+                </div>
               </div>
               <div class="col-md-6">
                 <label for="email">Email</label>
-                <input class="form-control" id="email" type="email" aria-describedby="nameHelp" placeholder="Digite seu sobrenome">
+                <input class="form-control" id="email" type="email" aria-describedby="nameHelp" placeholder="Digite seu email" formControlName="email">
+                <div class="alert alert-danger" role="alert" *ngIf="!formularioEmpresa.get('email').valid">
+                  O campo email é obrigatório
+                </div>
               </div>
             </div>
           </div>
@@ -39,14 +59,14 @@
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
-                <button class="btn btn-primary">Salvar</button>
-                <button class="btn btn-default">Limpar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button class="btn btn-default" (click)="resetar()">Limpar</button>
               </div>
             </div>
           </div>
-        </form>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
-      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
   </div>
-</div>
+</form>

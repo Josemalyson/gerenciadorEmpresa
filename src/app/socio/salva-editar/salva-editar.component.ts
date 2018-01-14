@@ -1,13 +1,14 @@
-import { RootObject } from './root-object.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
+import { RootObject } from './root-object.model';
+import { Socio } from '../socio';
+
 import { SocioService } from '../socio.service';
 import { error } from 'util';
-import { Socio } from '../socio';
 
 @Component({
   selector: 'app-salva-editar',
