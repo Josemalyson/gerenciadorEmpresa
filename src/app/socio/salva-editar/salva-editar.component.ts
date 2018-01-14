@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Http } from '@angular/http';
 
 import { SocioService } from '../socio.service';
+import { error } from 'util';
 
 @Component({
   selector: 'app-salva-editar',
@@ -30,13 +31,22 @@ export class SalvaEditarComponent implements OnInit {
   onSubmit() {
     console.log(this.formularioSocio);
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioSocio.value))
-    .subscribe(dados => console.log(dados));
+    // this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioSocio.value))
+    //   .subscribe(dados => console.log(dados));
 
     this.http.get('https://viacep.com.br/ws/01001000/json/')
-    .subscribe(dados => console.log(dados));
+      .subscribe(dados => {
+        console.log(dados);
+        this.resetar();
+      },
+      (errror: any) => alert('eroo')
+      );
 
     this._socioService.salvar(null);
+  }
+
+  resetar() {
+    this.formularioSocio.reset();
   }
 
 }
